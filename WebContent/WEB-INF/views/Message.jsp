@@ -8,11 +8,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+  
     <c:if test="${empty requestScope.message}">
                 <h2>模板为空</h2>
     </c:if>
-    <c:forEach items="${requestScope.message}" var="item">
-                <h3>${item}</h3>
-    </c:forEach>
+    <c:forEach items="${requestScope.message}" var="item">                  
+                <c:out value = "${item.value}" />    
+                <c:if test="${null != item.key.messageID}">                    
+                    <c:out value = "${item.key}" />                     
+                </c:if>   
+                <br>
+                       
+    </c:forEach>    
+    <c:forEach items="${requestScope.message}" var="item">                                      
+                <c:if test="${':31C:' == item.value}">                    
+                    <c:out value = "${item.key.messageID}" />                     
+                </c:if>   
+                <br>
+                       
+    </c:forEach>  
+    
+
 </body>
 </html>
